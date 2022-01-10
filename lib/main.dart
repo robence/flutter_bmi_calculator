@@ -5,6 +5,12 @@ void main() {
   runApp(const BMICalculator());
 }
 
+mixin CustomColors {
+  static const background = Color(0xFF0a0e21);
+  static const button = Color(0xFFEB1555);
+  static const tile = Color(0xFF1D1E33);
+}
+
 class BMICalculator extends StatelessWidget {
   const BMICalculator({Key? key}) : super(key: key);
 
@@ -15,12 +21,12 @@ class BMICalculator extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: const ColorScheme.light().copyWith(
-          primary: const Color(0xFF0a0e21),
+          primary: CustomColors.background,
         ),
         textTheme: const TextTheme(
           bodyText2: TextStyle(color: Colors.white),
         ),
-        scaffoldBackgroundColor: const Color(0xFF0a0e21),
+        scaffoldBackgroundColor: CustomColors.background,
       ),
       home: const InputPage(),
     );

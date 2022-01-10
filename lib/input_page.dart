@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bmi_calculator/main.dart';
 
 class InputPage extends StatelessWidget {
   const InputPage({Key? key}) : super(key: key);
@@ -22,12 +23,19 @@ class InputPage extends StatelessWidget {
             ),
             const MyTile(),
             Expanded(
-                child: Row(
-              children: const [
-                MyTile(),
-                MyTile(),
-              ],
-            ))
+              child: Row(
+                children: const [
+                  MyTile(),
+                  MyTile(),
+                ],
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 10.0),
+              width: double.infinity,
+              color: CustomColors.button,
+              height: 80.0,
+            )
           ],
         ),
       ),
@@ -44,7 +52,7 @@ class MyTile extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.all(15.0),
         decoration: BoxDecoration(
-          color: const Color(0xFF1D1E33),
+          color: CustomColors.tile,
           borderRadius: BorderRadius.circular(16.0),
         ),
       ),
