@@ -13,15 +13,21 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        colorScheme: const ColorScheme.light().copyWith(
+          primary: const Color(0xFF0a0e21),
+        ),
+        textTheme: const TextTheme(
+          bodyText2: TextStyle(color: Colors.white),
+        ),
+        scaffoldBackgroundColor: const Color(0xFF0a0e21),
       ),
-      home: const MyHomePage(),
+      home: const InputPage(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+class InputPage extends StatelessWidget {
+  const InputPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +37,6 @@ class MyHomePage extends StatelessWidget {
       ),
       body: const Center(
         child: Text('Body Text'),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: () {},
       ),
     );
   }
