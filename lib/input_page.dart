@@ -9,8 +9,44 @@ class InputPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("BMI CALCULATOR"),
       ),
-      body: const Center(
-        child: Text('Body Text'),
+      body: SafeArea(
+        child: Column(
+          children: [
+            Expanded(
+              child: Row(
+                children: const [
+                  MyTile(),
+                  MyTile(),
+                ],
+              ),
+            ),
+            const MyTile(),
+            Expanded(
+                child: Row(
+              children: const [
+                MyTile(),
+                MyTile(),
+              ],
+            ))
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class MyTile extends StatelessWidget {
+  const MyTile({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        margin: const EdgeInsets.all(15.0),
+        decoration: BoxDecoration(
+          color: const Color(0xFF1D1E33),
+          borderRadius: BorderRadius.circular(16.0),
+        ),
       ),
     );
   }
