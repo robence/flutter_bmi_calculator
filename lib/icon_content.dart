@@ -1,30 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bmi_calculator/gender.dart';
 import 'package:flutter_bmi_calculator/main.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class IconContent extends StatelessWidget {
-  final String title;
-  final IconData icon;
-  const IconContent({Key? key, required this.title, required this.icon})
-      : super(key: key);
+  final Gender gender;
+
+  const IconContent({Key? key, required this.gender}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          FaIcon(
-            icon,
-            color: Colors.white,
-            size: 80.0,
-          ),
-          const SizedBox(height: 16.0),
-          Text(
-            title.toUpperCase(),
-            style: const TextStyle(color: CustomColors.font, fontSize: 18.0),
-          ),
-        ],
+    return GestureDetector(
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            FaIcon(
+              gender.icon,
+              color: Colors.white,
+              size: 80.0,
+            ),
+            const SizedBox(height: 16.0),
+            Text(
+              gender.name.toUpperCase(),
+              style: const TextStyle(color: CustomColors.font, fontSize: 18.0),
+            ),
+          ],
+        ),
       ),
     );
   }

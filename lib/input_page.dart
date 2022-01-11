@@ -1,11 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bmi_calculator/gender.dart';
 import 'package:flutter_bmi_calculator/icon_content.dart';
 import 'package:flutter_bmi_calculator/main.dart';
 import 'package:flutter_bmi_calculator/reusable_card.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class InputPage extends StatelessWidget {
+class InputPage extends StatefulWidget {
   const InputPage({Key? key}) : super(key: key);
+
+  @override
+  State<InputPage> createState() => _InputPageState();
+}
+
+class _InputPageState extends State<InputPage> {
+  Gender? selectedGender;
+
+  void selectGender(Gender gender) {
+    setState(() {
+      selectedGender = gender;
+    });
+  }
+
+  bool isGenderActive(Gender gender) => selectedGender == gender;
 
   @override
   Widget build(BuildContext context) {
@@ -18,14 +33,16 @@ class InputPage extends StatelessWidget {
           children: [
             Expanded(
               child: Row(
-                children: const [
+                children: [
                   ReusableCard(
-                    child:
-                        IconContent(title: 'Male', icon: FontAwesomeIcons.mars),
+                    isActive: Gender.male == selectedGender,
+                    onTap: () => selectGender(Gender.male),
+                    child: const IconContent(gender: Gender.male),
                   ),
                   ReusableCard(
-                    child: IconContent(
-                        title: 'Female', icon: FontAwesomeIcons.venus),
+                    isActive: Gender.female == selectedGender,
+                    onTap: () => selectGender(Gender.female),
+                    child: const IconContent(gender: Gender.female),
                   ),
                 ],
               ),
