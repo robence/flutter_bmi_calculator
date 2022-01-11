@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bmi_calculator/icon_text.dart';
+import 'package:flutter_bmi_calculator/icon_content.dart';
 import 'package:flutter_bmi_calculator/main.dart';
 import 'package:flutter_bmi_calculator/reusable_card.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

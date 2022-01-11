@@ -21,7 +21,7 @@ class IconContent extends StatelessWidget {
           ),
           const SizedBox(height: 16.0),
           Text(
-            title,
+            title.toUpperCase(),
             style: const TextStyle(color: CustomColors.font, fontSize: 18.0),
           ),
         ],
