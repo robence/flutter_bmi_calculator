@@ -20,11 +20,12 @@ class InputPage extends StatelessWidget {
               child: Row(
                 children: const [
                   ReusableCard(
-                    child: IconText(title: 'Male', icon: FontAwesomeIcons.mars),
+                    child:
+                        IconContent(title: 'Male', icon: FontAwesomeIcons.mars),
                   ),
                   ReusableCard(
-                    child:
-                        IconText(title: 'Female', icon: FontAwesomeIcons.venus),
+                    child: IconContent(
+                        title: 'Female', icon: FontAwesomeIcons.venus),
                   ),
                 ],
               ),

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bmi_calculator/main.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class IconText extends StatelessWidget {
+class IconContent extends StatelessWidget {
   final String title;
   final IconData icon;
-  const IconText({Key? key, required this.title, required this.icon})
+  const IconContent({Key? key, required this.title, required this.icon})
       : super(key: key);
 
   @override
