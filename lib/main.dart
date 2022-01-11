@@ -8,7 +8,8 @@ void main() {
 mixin CustomColors {
   static const background = Color(0xFF0a0e21);
   static const button = Color(0xFFEB1555);
-  static const tile = Color(0xFF1D1E33);
+  static const activeCard = Color(0xFF1D1E33);
+  static const card = Color(0xFF111328);
   static const font = Color(0xFF8D8E98);
 }
 
