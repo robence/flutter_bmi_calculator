@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bmi_calculator/icon_text.dart';
 import 'package:flutter_bmi_calculator/main.dart';
+import 'package:flutter_bmi_calculator/reusable_card.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class InputPage extends StatelessWidget {
   const InputPage({Key? key}) : super(key: key);
@@ -16,17 +19,22 @@ class InputPage extends StatelessWidget {
             Expanded(
               child: Row(
                 children: const [
-                  MyTile(),
-                  MyTile(),
+                  ReusableCard(
+                    child: IconText(title: 'Male', icon: FontAwesomeIcons.mars),
+                  ),
+                  ReusableCard(
+                    child:
+                        IconText(title: 'Female', icon: FontAwesomeIcons.venus),
+                  ),
                 ],
               ),
             ),
-            const MyTile(),
+            const ReusableCard(),
             Expanded(
               child: Row(
                 children: const [
-                  MyTile(),
-                  MyTile(),
+                  ReusableCard(),
+                  ReusableCard(),
                 ],
               ),
             ),
@@ -37,23 +45,6 @@ class InputPage extends StatelessWidget {
               height: 80.0,
             )
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class MyTile extends StatelessWidget {
-  const MyTile({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        margin: const EdgeInsets.all(15.0),
-        decoration: BoxDecoration(
-          color: CustomColors.tile,
-          borderRadius: BorderRadius.circular(16.0),
         ),
       ),
     );
