@@ -5,6 +5,7 @@ import 'package:flutter_bmi_calculator/model/gender.dart';
 import 'package:flutter_bmi_calculator/ui/bottom_button.dart';
 import 'package:flutter_bmi_calculator/ui/icon_content.dart';
 import 'package:flutter_bmi_calculator/ui/reusable_card.dart';
+import 'package:flutter_bmi_calculator/ui/round_icon_button.dart';
 
 class InputPage extends StatefulWidget {
   const InputPage({Key? key}) : super(key: key);
@@ -180,25 +181,6 @@ class _InputPageState extends State<InputPage> {
           ),
         ],
       ),
-    );
-  }
-}
-
-class RoundIconButton extends StatelessWidget {
-  final IconData icon;
-  final void Function() onChange;
-  const RoundIconButton({Key? key, required this.icon, required this.onChange})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      elevation: 6.0,
-      shape: const CircleBorder(),
-      constraints: const BoxConstraints(minWidth: 56.0, minHeight: 56.0),
-      fillColor: CustomColors.greyButtonBackground,
-      child: Icon(icon, color: Colors.white),
-      onPressed: onChange,
     );
   }
 }
