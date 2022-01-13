@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bmi_calculator/constants/font_styles.dart';
 import 'package:flutter_bmi_calculator/gender.dart';
-import 'package:flutter_bmi_calculator/main.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class IconContent extends StatelessWidget {
@@ -21,10 +21,7 @@ class IconContent extends StatelessWidget {
               size: 80.0,
             ),
             const SizedBox(height: 16.0),
-            Text(
-              gender.name.toUpperCase(),
-              style: const TextStyle(color: CustomColors.font, fontSize: 18.0),
-            ),
+            Text(gender.name.toUpperCase(), style: FontStyles.label),
           ],
         ),
       ),

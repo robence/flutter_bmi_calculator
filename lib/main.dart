@@ -1,16 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bmi_calculator/constants/custom_colors.dart';
 import 'package:flutter_bmi_calculator/input_page.dart';
 
 void main() {
   runApp(const BMICalculator());
-}
-
-mixin CustomColors {
-  static const background = Color(0xFF0a0e21);
-  static const button = Color(0xFFEB1555);
-  static const activeCard = Color(0xFF1D1E33);
-  static const card = Color(0xFF111328);
-  static const font = Color(0xFF8D8E98);
 }
 
 class BMICalculator extends StatelessWidget {
