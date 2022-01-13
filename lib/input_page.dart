@@ -16,6 +16,7 @@ class _InputPageState extends State<InputPage> {
   Gender? selectedGender;
   int height = 180;
   int weight = 80;
+  int age = 18;
 
   void selectGender(Gender gender) {
     setState(() {
@@ -26,6 +27,12 @@ class _InputPageState extends State<InputPage> {
   void changeWeight(int amount) {
     setState(() {
       weight += amount;
+    });
+  }
+
+  void changeAge(int amount) {
+    setState(() {
+      age += amount;
     });
   }
 
@@ -114,18 +121,7 @@ class _InputPageState extends State<InputPage> {
                           'Weight'.toUpperCase(),
                           style: FontStyles.label,
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.baseline,
-                          textBaseline: TextBaseline.alphabetic,
-                          children: [
-                            Text(weight.toString(), style: FontStyles.number),
-                            const Text(
-                              'kg',
-                              style: FontStyles.label,
-                            ),
-                          ],
-                        ),
+                        Text(weight.toString(), style: FontStyles.number),
                         const SizedBox(
                           height: 10.0,
                         ),
@@ -146,7 +142,35 @@ class _InputPageState extends State<InputPage> {
                       ],
                     ),
                   ),
-                  const ReusableCard(),
+                  ReusableCard(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Age'.toUpperCase(),
+                          style: FontStyles.label,
+                        ),
+                        Text(age.toString(), style: FontStyles.number),
+                        const SizedBox(
+                          height: 10.0,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundIconButton(
+                              icon: Icons.remove,
+                              onChange: () => changeAge(-1),
+                            ),
+                            const SizedBox(width: 16.0),
+                            RoundIconButton(
+                              icon: Icons.add,
+                              onChange: () => changeAge(1),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
