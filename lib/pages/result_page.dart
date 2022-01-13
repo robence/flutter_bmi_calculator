@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bmi_calculator/constants/custom_colors.dart';
-import 'package:flutter_bmi_calculator/constants/font_styles.dart';
+import 'package:flutter_bmi_calculator/ui/bottom_button.dart';
 import 'package:flutter_bmi_calculator/ui/reusable_card.dart';
 
 class ResultPage extends StatelessWidget {
@@ -30,8 +30,10 @@ class ResultPage extends StatelessWidget {
                 children: const [
                   Text(
                     "Text",
-                    style:
-                        TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.bold,
+                        color: CustomColors.resultGreen),
                   ),
                   Text(
                     "Value",
@@ -41,28 +43,16 @@ class ResultPage extends StatelessWidget {
                   Text(
                     "Desc",
                     style: TextStyle(fontSize: 24.0),
+                    textAlign: TextAlign.center,
                   ),
                 ],
               ),
             ),
           ),
-          GestureDetector(
+          BottomButton(
             onTap: () => Navigator.pushReplacementNamed(context, '/result'),
-            child: Container(
-              padding: const EdgeInsets.only(bottom: 12.0),
-              child: Center(
-                child: Text(
-                  'Re-Calculate'.toUpperCase(),
-                  textAlign: TextAlign.center,
-                  style: FontStyles.button,
-                ),
-              ),
-              margin: const EdgeInsets.only(top: 10.0),
-              width: double.infinity,
-              color: CustomColors.button,
-              height: 80.0,
-            ),
-          )
+            title: 'Re-Calculate',
+          ),
         ],
       ),
     );
