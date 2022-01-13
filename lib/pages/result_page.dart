@@ -50,7 +50,7 @@ class ResultPage extends StatelessWidget {
             ),
           ),
           BottomButton(
-            onTap: () => Navigator.pushReplacementNamed(context, '/result'),
+            onTap: () => Navigator.pop(context),
             title: 'Re-Calculate',
           ),
         ],
