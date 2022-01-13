@@ -44,154 +44,153 @@ class _InputPageState extends State<InputPage> {
       appBar: AppBar(
         title: const Text("BMI CALCULATOR"),
       ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              child: Row(
-                children: [
-                  ReusableCard(
-                    isActive: Gender.male == selectedGender,
-                    onTap: () => selectGender(Gender.male),
-                    child: const IconContent(gender: Gender.male),
-                  ),
-                  ReusableCard(
-                    isActive: Gender.female == selectedGender,
-                    onTap: () => selectGender(Gender.female),
-                    child: const IconContent(gender: Gender.female),
-                  ),
-                ],
-              ),
+      body: Column(
+        children: [
+          Expanded(
+            child: Row(
+              children: [
+                ReusableCard(
+                  isActive: Gender.male == selectedGender,
+                  onTap: () => selectGender(Gender.male),
+                  child: const IconContent(gender: Gender.male),
+                ),
+                ReusableCard(
+                  isActive: Gender.female == selectedGender,
+                  onTap: () => selectGender(Gender.female),
+                  child: const IconContent(gender: Gender.female),
+                ),
+              ],
             ),
-            ReusableCard(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Height'.toUpperCase(),
-                    style: FontStyles.label,
+          ),
+          ReusableCard(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Height'.toUpperCase(),
+                  style: FontStyles.label,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.baseline,
+                  textBaseline: TextBaseline.alphabetic,
+                  children: [
+                    Text(height.toString(), style: FontStyles.number),
+                    const Text(
+                      'cm',
+                      style: FontStyles.label,
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10.0),
+                SliderTheme(
+                  data: SliderTheme.of(context).copyWith(
+                    // activeTrackColor: Colors.white,
+                    activeTrackColor: CustomColors.button,
+                    inactiveTrackColor: CustomColors.font,
+                    thumbShape:
+                        const RoundSliderThumbShape(enabledThumbRadius: 16.0),
+                    thumbColor: CustomColors.button,
+                    overlayShape:
+                        const RoundSliderOverlayShape(overlayRadius: 32.0),
+                    overlayColor: CustomColors.button.withAlpha(0x29),
                   ),
-                  Row(
+                  child: Slider(
+                    value: height.toDouble(),
+                    min: 120.0,
+                    max: 220.0,
+                    onChanged: (value) {
+                      setState(() {
+                        height = value.round();
+                      });
+                    },
+                  ),
+                )
+              ],
+            ),
+          ),
+          Expanded(
+            child: Row(
+              children: [
+                ReusableCard(
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.baseline,
-                    textBaseline: TextBaseline.alphabetic,
                     children: [
-                      Text(height.toString(), style: FontStyles.number),
-                      const Text(
-                        'cm',
+                      Text(
+                        'Weight'.toUpperCase(),
                         style: FontStyles.label,
                       ),
+                      Text(weight.toString(), style: FontStyles.number),
+                      const SizedBox(
+                        height: 10.0,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          RoundIconButton(
+                            icon: Icons.remove,
+                            onChange: () => changeWeight(-1),
+                          ),
+                          const SizedBox(width: 16.0),
+                          RoundIconButton(
+                            icon: Icons.add,
+                            onChange: () => changeWeight(1),
+                          ),
+                        ],
+                      )
                     ],
                   ),
-                  const SizedBox(height: 10.0),
-                  SliderTheme(
-                    data: SliderTheme.of(context).copyWith(
-                      // activeTrackColor: Colors.white,
-                      activeTrackColor: CustomColors.button,
-                      inactiveTrackColor: CustomColors.font,
-                      thumbShape:
-                          const RoundSliderThumbShape(enabledThumbRadius: 16.0),
-                      thumbColor: CustomColors.button,
-                      overlayShape:
-                          const RoundSliderOverlayShape(overlayRadius: 32.0),
-                      overlayColor: CustomColors.button.withAlpha(0x29),
-                    ),
-                    child: Slider(
-                      value: height.toDouble(),
-                      min: 120.0,
-                      max: 220.0,
-                      onChanged: (value) {
-                        setState(() {
-                          height = value.round();
-                        });
-                      },
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Expanded(
-              child: Row(
-                children: [
-                  ReusableCard(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Weight'.toUpperCase(),
-                          style: FontStyles.label,
-                        ),
-                        Text(weight.toString(), style: FontStyles.number),
-                        const SizedBox(
-                          height: 10.0,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            RoundIconButton(
-                              icon: Icons.remove,
-                              onChange: () => changeWeight(-1),
-                            ),
-                            const SizedBox(width: 16.0),
-                            RoundIconButton(
-                              icon: Icons.add,
-                              onChange: () => changeWeight(1),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                  ReusableCard(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Age'.toUpperCase(),
-                          style: FontStyles.label,
-                        ),
-                        Text(age.toString(), style: FontStyles.number),
-                        const SizedBox(
-                          height: 10.0,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            RoundIconButton(
-                              icon: Icons.remove,
-                              onChange: () => changeAge(-1),
-                            ),
-                            const SizedBox(width: 16.0),
-                            RoundIconButton(
-                              icon: Icons.add,
-                              onChange: () => changeAge(1),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            GestureDetector(
-              onTap: () => Navigator.pushNamed(context, '/result'),
-              child: Container(
-                child: Center(
-                  child: Text(
-                    'Calculate'.toUpperCase(),
-                    textAlign: TextAlign.center,
-                    style: FontStyles.button,
+                ),
+                ReusableCard(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Age'.toUpperCase(),
+                        style: FontStyles.label,
+                      ),
+                      Text(age.toString(), style: FontStyles.number),
+                      const SizedBox(
+                        height: 10.0,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          RoundIconButton(
+                            icon: Icons.remove,
+                            onChange: () => changeAge(-1),
+                          ),
+                          const SizedBox(width: 16.0),
+                          RoundIconButton(
+                            icon: Icons.add,
+                            onChange: () => changeAge(1),
+                          ),
+                        ],
+                      )
+                    ],
                   ),
                 ),
-                margin: const EdgeInsets.only(top: 10.0),
-                width: double.infinity,
-                color: CustomColors.button,
-                height: 80.0,
+              ],
+            ),
+          ),
+          GestureDetector(
+            onTap: () => Navigator.pushNamed(context, '/result'),
+            child: Container(
+              padding: const EdgeInsets.only(bottom: 12.0),
+              child: Center(
+                child: Text(
+                  'Calculate'.toUpperCase(),
+                  textAlign: TextAlign.center,
+                  style: FontStyles.button,
+                ),
               ),
-            )
-          ],
-        ),
+              margin: const EdgeInsets.only(top: 10.0),
+              width: double.infinity,
+              color: CustomColors.button,
+              height: 80.0,
+            ),
+          )
+        ],
       ),
     );
   }
