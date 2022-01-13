@@ -6,4 +6,5 @@ mixin CustomColors {
   static const activeCard = Color(0xFF1D1E33);
   static const card = Color(0xFF111328);
   static const font = Color(0xFF8D8E98);
+  static const greyButtonBackground = Color(0xFF4C4F5E);
 }

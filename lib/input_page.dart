@@ -14,11 +14,18 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gender? selectedGender;
-  int height = 182;
+  int height = 180;
+  int weight = 80;
 
   void selectGender(Gender gender) {
     setState(() {
       selectedGender = gender;
+    });
+  }
+
+  void changeWeight(int amount) {
+    setState(() {
+      weight += amount;
     });
   }
 
@@ -62,18 +69,14 @@ class _InputPageState extends State<InputPage> {
                     crossAxisAlignment: CrossAxisAlignment.baseline,
                     textBaseline: TextBaseline.alphabetic,
                     children: [
-                      Text(
-                        height.toString(),
-                        style: const TextStyle(
-                            fontSize: 48.0, fontWeight: FontWeight.bold),
-                      ),
+                      Text(height.toString(), style: FontStyles.number),
                       const Text(
                         'cm',
                         style: FontStyles.label,
                       ),
                     ],
                   ),
-                  const SizedBox(height: 16.0),
+                  const SizedBox(height: 10.0),
                   SliderTheme(
                     data: SliderTheme.of(context).copyWith(
                       // activeTrackColor: Colors.white,
@@ -102,9 +105,48 @@ class _InputPageState extends State<InputPage> {
             ),
             Expanded(
               child: Row(
-                children: const [
-                  ReusableCard(),
-                  ReusableCard(),
+                children: [
+                  ReusableCard(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Weight'.toUpperCase(),
+                          style: FontStyles.label,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          textBaseline: TextBaseline.alphabetic,
+                          children: [
+                            Text(weight.toString(), style: FontStyles.number),
+                            const Text(
+                              'kg',
+                              style: FontStyles.label,
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10.0,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundIconButton(
+                              icon: Icons.remove,
+                              onChange: () => changeWeight(-1),
+                            ),
+                            const SizedBox(width: 16.0),
+                            RoundIconButton(
+                              icon: Icons.add,
+                              onChange: () => changeWeight(1),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  const ReusableCard(),
                 ],
               ),
             ),
@@ -117,6 +159,25 @@ class _InputPageState extends State<InputPage> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class RoundIconButton extends StatelessWidget {
+  final IconData icon;
+  final void Function() onChange;
+  const RoundIconButton({Key? key, required this.icon, required this.onChange})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      elevation: 6.0,
+      shape: const CircleBorder(),
+      constraints: const BoxConstraints(minWidth: 56.0, minHeight: 56.0),
+      fillColor: CustomColors.greyButtonBackground,
+      child: Icon(icon, color: Colors.white),
+      onPressed: onChange,
     );
   }
 }
