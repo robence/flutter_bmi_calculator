@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bmi_calculator/constants/custom_colors.dart';
 import 'package:flutter_bmi_calculator/constants/font_styles.dart';
-import 'package:flutter_bmi_calculator/gender.dart';
-import 'package:flutter_bmi_calculator/icon_content.dart';
-import 'package:flutter_bmi_calculator/reusable_card.dart';
+import 'package:flutter_bmi_calculator/model/gender.dart';
+import 'package:flutter_bmi_calculator/ui/icon_content.dart';
+import 'package:flutter_bmi_calculator/ui/reusable_card.dart';
 
 class InputPage extends StatefulWidget {
   const InputPage({Key? key}) : super(key: key);
@@ -174,11 +174,21 @@ class _InputPageState extends State<InputPage> {
                 ],
               ),
             ),
-            Container(
-              margin: const EdgeInsets.only(top: 10.0),
-              width: double.infinity,
-              color: CustomColors.button,
-              height: 80.0,
+            GestureDetector(
+              onTap: () => Navigator.pushNamed(context, '/result'),
+              child: Container(
+                child: Center(
+                  child: Text(
+                    'Calculate'.toUpperCase(),
+                    textAlign: TextAlign.center,
+                    style: FontStyles.button,
+                  ),
+                ),
+                margin: const EdgeInsets.only(top: 10.0),
+                width: double.infinity,
+                color: CustomColors.button,
+                height: 80.0,
+              ),
             )
           ],
         ),

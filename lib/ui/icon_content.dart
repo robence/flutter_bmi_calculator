@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bmi_calculator/constants/font_styles.dart';
-import 'package:flutter_bmi_calculator/gender.dart';
+import 'package:flutter_bmi_calculator/model/gender.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class IconContent extends StatelessWidget {
