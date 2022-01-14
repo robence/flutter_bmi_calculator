@@ -26,7 +26,7 @@ class BMICalculator extends StatelessWidget {
       ),
       routes: {
         '/': (context) => const InputPage(),
-        '/result': (context) => const ResultPage(),
+        ResultPage.routeName: (context) => const ResultPage(),
       },
       initialRoute: '/',
     );

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bmi_calculator/constants/custom_colors.dart';
 import 'package:flutter_bmi_calculator/constants/font_styles.dart';
+import 'package:flutter_bmi_calculator/controller/calculator_controller.dart';
 import 'package:flutter_bmi_calculator/model/gender.dart';
+import 'package:flutter_bmi_calculator/pages/result_page.dart';
 import 'package:flutter_bmi_calculator/ui/bottom_button.dart';
 import 'package:flutter_bmi_calculator/ui/icon_content.dart';
 import 'package:flutter_bmi_calculator/ui/reusable_card.dart';
@@ -42,6 +44,7 @@ class _InputPageState extends State<InputPage> {
 
   @override
   Widget build(BuildContext context) {
+    CalculatorController calc;
     return Scaffold(
       appBar: AppBar(
         title: const Text("BMI CALCULATOR"),
@@ -176,7 +179,18 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           BottomButton(
-            onTap: () => Navigator.pushNamed(context, '/result'),
+            onTap: () => {
+              calc = CalculatorController(height: height, weight: weight),
+              Navigator.pushNamed(
+                context,
+                '/result',
+                arguments: ResultPageArguments(
+                  bmiResult: calc.calculateBMI(),
+                  interpretation: calc.interpretation,
+                  resultText: calc.result,
+                ),
+              ),
+            },
             title: 'Calculate',
           ),
         ],

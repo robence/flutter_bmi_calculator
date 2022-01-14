@@ -3,11 +3,28 @@ import 'package:flutter_bmi_calculator/constants/custom_colors.dart';
 import 'package:flutter_bmi_calculator/ui/bottom_button.dart';
 import 'package:flutter_bmi_calculator/ui/reusable_card.dart';
 
+class ResultPageArguments {
+  final String bmiResult;
+  final String resultText;
+  final String interpretation;
+
+  ResultPageArguments({
+    required this.bmiResult,
+    required this.resultText,
+    required this.interpretation,
+  });
+}
+
 class ResultPage extends StatelessWidget {
   const ResultPage({Key? key}) : super(key: key);
 
+  static const routeName = '/result';
+
   @override
   Widget build(BuildContext context) {
+    final args =
+        ModalRoute.of(context)!.settings.arguments as ResultPageArguments;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('BMI Calculator'.toUpperCase()),
@@ -27,22 +44,22 @@ class ResultPage extends StatelessWidget {
               width: double.infinity,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
+                children: [
                   Text(
-                    "Text",
-                    style: TextStyle(
+                    args.resultText.toUpperCase(),
+                    style: const TextStyle(
                         fontSize: 24.0,
                         fontWeight: FontWeight.bold,
                         color: CustomColors.resultGreen),
                   ),
                   Text(
-                    "Value",
-                    style:
-                        TextStyle(fontSize: 80.0, fontWeight: FontWeight.bold),
+                    args.bmiResult,
+                    style: const TextStyle(
+                        fontSize: 80.0, fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    "Desc",
-                    style: TextStyle(fontSize: 24.0),
+                    args.interpretation,
+                    style: const TextStyle(fontSize: 24.0),
                     textAlign: TextAlign.center,
                   ),
                 ],
